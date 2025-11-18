@@ -15,11 +15,12 @@
             #container > div {
                 position: absolute;
                 width: 200px;
-                height: 100px;
+                /* height: 100px; */
                 text-align: center;
                 line-height: 100px;
                 border: 3px solid red;
                 background-color: #fee;
+                box-sizing: border-box;
             }
 
             #container > div:nth-child(1) {
@@ -38,6 +39,8 @@
                 margin-top: -50px;
                 margin-left: -100px;
                 /* transform: translate(-50%, -50%); */
+                /* 두개를 다 해봤는데 미세한 차이가 있어요 border-box를 줘서
+                width와 height을 200px, 100px로 고정을 했는데도 미세하게 달라지는데 이유가 뭘까요? */
             }
 
             #container > div:nth-child(4) {
