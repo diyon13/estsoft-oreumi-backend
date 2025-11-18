@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>day04-ex-01</title>
+        <link rel="stylesheet" href="/reset.css">
+        <style>
+            #container {
+                position: relative;
+                height: 400px;
+                border: 3px solid green;
+                background-color: #efe;
+            }
+
+            #container > div {
+                position: absolute;
+                width: 200px;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                border: 3px solid red;
+                background-color: #fee;
+            }
+
+            #container > div:nth-child(1) {
+                top: 10px;
+                left: 10px;
+            }
+
+            #container > div:nth-child(2) {
+                top: 10px;
+                right: 10px;
+            }
+
+            #container > div:nth-child(3) {
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -100px;
+                /* transform: translate(-50%, -50%); */
+            }
+
+            #container > div:nth-child(4) {
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            #container > div:nth-child(5) {
+                bottom: 10px;
+                right: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div>BOX #1</div>
+            <div>BOX #2</div>
+            <div>BOX #3</div>
+            <div>BOX #4</div>
+            <div>BOX #5</div>
+        </div>
+    </body>
+</html>
