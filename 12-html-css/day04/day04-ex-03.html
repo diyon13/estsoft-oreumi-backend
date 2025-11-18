@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>day04-ex-03</title>
+        <link rel="stylesheet" href="/reset.css">
+        <style>
+            #container {
+                width: 420px;
+                line-height: 200px;
+                display: flex;
+                text-align: center;
+                font-weight: bold;
+                border: 2px solid #333;
+                padding: 20px;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }   
+
+            #container > div { width: 200px; }
+
+            #container > div:nth-child(1) { background-color: pink; }
+
+            #container > div:nth-child(2) { background-color: yellowgreen; }
+
+            #container > div:nth-child(3) { background-color: cyan; }
+
+            #container > div:nth-child(4) { background-color: gold; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div>Pink</div>
+            <div>Yellowgreen</div>
+            <div>Cyan</div>
+            <div>Gold</div>
+        </div>
+    </body>
+</html>
