@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>day05-ex-01</title>
+        <link rel="stylesheet" href="/reset.css">
+        <style>
+            #container {
+                width: 420px;
+                height: 220px;
+                padding: 20px;
+                border: 2px solid #333;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            #container > div:nth-child(1) {
+                background-color: pink;
+                width: 200px;
+                line-height: 100px;
+            }
+
+            #container > div:nth-child(2) {
+                background-color: yellowgreen;
+                width: 200px;
+                line-height: 100px;
+            }
+
+            #container > div:nth-child(3) {
+                background-color: gold;
+                width: 200px;
+                line-height: 220px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div>Pink</div>
+            <div>Yellowgreen</div>
+            <div>Gold</div>
+        </div>
+    </body>
+</html>
