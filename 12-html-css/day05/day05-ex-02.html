@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>day05-ex-02</title>
+        <link rel="stylesheet" href="/reset.css">
+        <style>
+            body {
+                background-color: antiquewhite;
+            }
+            #container {
+                margin: 200px 100px;
+            }
+
+            #container > h2 {
+                font-weight: bold;
+                line-height: 2.0;
+            }
+
+            #container > p {
+                line-height: 1.6;
+            }
+
+            #overlay {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            #alert {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                width: 400px;
+                background-color: #aaa;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            
+            #alert > h2 {
+                margin: 0;
+                color: white;
+                background-color: #222;
+                font-size: 1.4em;
+                text-align: center;
+                line-height: 2.4;
+                font-weight: bold;
+            }
+
+            #alert > p {
+                margin: 0;
+                line-height: 1.6;
+                white-space: pre-line;
+                padding: 10px;
+                font-size: 1.3em;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="overlay">
+            <div id="alert">
+                <h2>Alert!</h2>
+                <p> 
+                    이것은 메시지 창입니다.
+                    오버레이 레이어 위에 올라와있습니다.
+                    그래서 오버레이 레이어와 함께 나타났다. 사라집니다.
+                    
+                </p>
+            </div>
+        </div>
+
+        <div id="container">
+            <h1>Lorem Ipsum</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed posuere euismod urna et fringilla. Sed mollis consectetur auctor. 
+                Donec sit amet velit luctus, malesuada velit eu, suscipit magna. 
+                Nullam vehicula nisl ac ex vehicula, eget pharetra mauris eleifend.
+                In congue ligula neque, eget fermentum dolor dignissim non. 
+                Sed hendrerit urna a nisi efficitur, quis viverra tellus maximus. 
+                Phasellus dapibus urna urna, a dignissim elit luctus in. 
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+                Quisque quis gravida leo. Nulla mollis varius molestie.
+                Fusce dictum urna non augue elementum posuere.
+            </p>
+
+            <p>
+                Praesent feugiat hendrerit justo eu aliquam. 
+                Maecenas rhoncus rutrum sapien ullamcorper ultricies. 
+                Proin at varius ligula. Nullam posuere sed ante id ultrices. 
+                Nulla et elit est. Quisque faucibus facilisis vulputate.
+                Aliquam lacinia in velit ut accumsan. 
+                Donec sodales sapien eu elit scelerisque porta. 
+                Sed fringilla nisl vitae lacus luctus, quis vestibulum leo mollis.
+            </p>
+
+            <p>
+                Donec placerat, risus a posuere porta, 
+                lorem magna tempor mauris, a aliquet ligula tortor id sem. 
+                Proin vel nibh nec orci viverra iaculis. Vestibulum vitae lorem massa.
+                Sed efficitur, libero ac cursus eleifend, tortor leo mollis felis, 
+                sodales feugiat justo orci sed nibh. Nulla rutrum nisl ac ante semper imperdiet ac vel tellus.
+                Duis ac arcu nibh. Vivamus ut sapien ex. Nunc at erat arcu. 
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
+                per inceptos himenaeos. Praesent a feugiat ex. 
+                Nam pellentesque venenatis purus et ullamcorper.
+                Nulla eu tortor ut nunc fermentum congue. Fusce feugiat lobortis dui a tincidunt. 
+                Phasellus magna neque, 
+                tincidunt nec consequat at, porttitor sit amet magna.
+            </p>
+        </div> <!-- /#container -->
+    </body>
+</html>
