@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="/reset.css">
+        <style>
+            #box {
+                background-color: #808000;
+                /* 초기컨테이닝을 기 */
+                /* position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0; */
+
+                /* 브라우저 화면을 기준 */
+                /* position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0; */
+
+                height: 100vh;
+            }
+
+            @media screen and (max-width: 767px) {
+                #box {
+                    border: 10px solid black;             
+                }
+            }
+
+            @media screen and (min-width: 768px) and (max-width: 1023px){
+                #box {
+                    border: 10px solid hotpink;
+                }
+            }
+
+            @media screen and (min-width: 1024px){
+                #box {
+                    border: 10px solid red;
+                }
+            }
+            </style>
+    </head>
+    <body>
+        <!-- #box 요소가 브라우저 화면 전체를 차지하도록 배치 -->
+        <div id="box"></div>
+    </body>
+</html>
