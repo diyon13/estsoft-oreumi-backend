@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+
+    <script>
+
+        document.write('Hello World!');
+        document.write('<h1>Hello World!</h1>');
+        console.log('Do yort best!');
+
+        console.groupCollapsed('EX-01');
+
+        var name = 'Harry Potter';
+        var age = 11;
+
+        console.log('Name:', name);
+        console.log('Age:', age);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-02');
+
+        var fruits = ['Apple', 'Banana', 'Cherry', 'Grape', 'Melon', 'Strawberry'];
+
+        console.log('fruits[2] =', fruits[2]);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-03');
+
+        var x = 10
+        var y = 3
+
+        console.log('x = %d, y = %d', x, y);
+        console.log('x + y =', x + y);
+        console.log('x - y =', x - y);
+        console.log('x * y =', x * y);
+        console.log('x / y =', x / y);
+        console.log('x % y =', x % y);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-04');
+
+        var width = 25;
+        var height = 15;
+
+        console.log('width =', width);
+        console.log('height =', height);
+        console.log('area =', width * height);
+        console.log('perimeter =', (width + height) * 2);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-05');
+
+        var num = 26;
+        // var num = 7;
+
+        if (num > 20) {
+            console.log('Hello Worlid!');
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-06');
+
+        // var num = 51;
+        // var num = 5;
+        var num = 26;
+
+        if (num > 20 && num < 40) {
+            console.log('Carpe Diem!');
+        }
+
+        console.groupEnd();
+    </script>
+
+</body>
+</html>
