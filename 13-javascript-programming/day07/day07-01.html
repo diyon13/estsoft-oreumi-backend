@@ -9,6 +9,152 @@
     </style>
 </head>
 <body>
+    <script>
+        console.groupCollapsed('EX-01');
+        // var num = 28;
+        var num = 5;
+
+        if (num % 2) {
+            console.log('%d is an even number', num);
+        } else {
+            console.log('%d is an odd number', num);
+        }
+        console.groupEnd();
+
+        console.groupCollapsed('EX-02');
+
+        // var num = 42;
+        // var num = 10;
+        var num = 8;
+        // var num = 45;
+
+        if (num % 15 === 0) {
+            console.log('FizzBuzz');
+        } else if (num % 5 === 0) {
+            console.log('Buzz');
+        } else if (num % 3 === 0) {
+            console.log('Fizz');
+        } else {
+            console.log(num);
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-03');
+
+        for(var i = 1; i <= 10; i++) {
+            console.log(i);
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-04');
+
+        for(var i = 1; i <= 20; i++) {
+            if (i % 2 === 0){
+                console.log(i);
+            }
+        }
+        console.groupEnd();
+
+        console.groupCollapsed('EX-05');
+
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+
+        for(var i = 0; i < numbers.length; i++) {
+            console.log('numbers[%d] = %d', i, numbers[i]);
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-06');
+        
+        var x = 16, y = 29;
+        // var x = 35, y = 17;
+
+        x > y ? console.log('%d - %d = %d', x, y, x - y)
+              : console.log('%d - %d = %d', y, x, y - x);
+
+        // if (x > y) {
+        //     console.log('%d - %d = %d', x, y, x - y);
+        // } else {
+        //     console.log('%d - %d = %d', y, x, y - x);
+        // }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-07');
+
+        var korean = 88;
+        var english = 72;
+        var math = 92;
+
+        var average = (korean + english + math) / 3;
+        var grade = 'F'
+
+        console.log('Average :', average);
+
+        if (average >= 90) {
+            console.log('Grade: A');
+        } else if (average >= 70) {
+            console.log('Grade: B');
+        } else if (average >= 60) {
+            console.log('Grade: C');
+        } else if (average >= 70) {
+            console.log('Grade: D');
+        } else {
+            console.log('Grade: F');
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-08');
+
+        var number = 8;
+
+        for (var i = 1; i <= number; i++) {
+            console.log('%d. Do your best!', i);
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-09');
+
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+
+        for (var i = 0; i < numbers.length; i++) {
+            if (numbers[i] > 15) {
+                console.log(numbers[i]);
+            }
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-10');
+
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+
+        for (var i = 0; i < numbers.length; i++) {
+            if (i % 2) {
+                console.log(numbers[i]);
+            }
+        }
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-11');
+
+        var favorites = ['Coffee', 'Juice', 'Coke', 'Milk', 'Tea'];
+
+        for (var i = 0; i < favorites.length; i++) {
+            if (favorites[i] === "Coffee" || favorites[i] === "Tea") {
+                console.log('%d. %s',i ,favorites[i]);
+            }
+        }
+
+        console.groupEnd();
+
+    </script> 
 
 </body>
 </html>
