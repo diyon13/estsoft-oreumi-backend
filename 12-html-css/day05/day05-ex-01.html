@@ -10,37 +10,31 @@
                 height: 220px;
                 padding: 20px;
                 border: 2px solid #333;
+
                 display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
                 gap: 20px;
+
                 text-align: center;
                 font-weight: bold;
-            }
-
-            #container > div:nth-child(1) {
-                background-color: pink;
-                width: 200px;
-                line-height: 100px;
-            }
-
-            #container > div:nth-child(2) {
-                background-color: yellowgreen;
-                width: 200px;
-                line-height: 100px;
-            }
-
-            #container > div:nth-child(3) {
-                background-color: gold;
-                width: 200px;
                 line-height: 220px;
             }
+
+            #container > div { width: 200px; }
+            #container > div:nth-child(1) > div { line-height: 100px; }
+            #container > div:nth-child(1) > div:first-child { margin-bottom: 20px; }
+
+            #container > div:nth-child(1) > div:nth-child(1) { background-color: pink; }
+            #container > div:nth-child(1) > div:nth-child(2) { background-color: yellowgreen; }
+            #container > div:nth-child(2) { background-color: gold; }
         </style>
     </head>
     <body>
         <div id="container">
-            <div>Pink</div>
-            <div>Yellowgreen</div>
+            <div>
+                <div>Pink</div>
+                <div>Yellowgreen</div>
+            </div>
+
             <div>Gold</div>
         </div>
     </body>

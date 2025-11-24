@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="../reset.css">
-    </head>
-    <body>
-        <script>
-            console.group('Ex-01');
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        console.group('Ex-01');
 
-            var n1 = 3, n2 = 7;
-            // var n1 = 21, n2 = 9;
-            
-            n1 > n2 ? console.log('The greater of %d and %d = %d', n1, n2, n1) 
-                    : console.log('The greater of %d and %d = %d', n1, n2, n2);
+        var n1 = 3, n2 = 7;
+        // var n1 = 21, n2 = 9;
+        
+        n1 > n2 ? console.log('The greater of %d and %d = %d', n1, n2, n1) 
+                : console.log('The greater of %d and %d = %d', n1, n2, n2);
 
-            console.groupEnd();
+        console.groupEnd();
 
-            console.group('Ex-02');
+        console.group('Ex-02');
 
-            var radius = 10;
-            var pi = 3.14;
-            var area = radius ** 2 * pi;
+        var radius = 10;
+        var pi = 3.14;
+        var area = radius ** 2 * pi;
 
-            console.log('area of the circle =', area);
+        console.log('area of the circle =', area);
 
-            console.groupEnd();
+        console.groupEnd();
 
-            console.group('Ex-03');
+        console.group('Ex-03');
 
-            var num = 51;
-            // var num = 5;
-            // var num = 26;
-            
-            if (num < 20 || num > 40) {
-                console.log('Dream comes true!');
-            }
+        var num = 51;
+        // var num = 5;
+        // var num = 26;
+        
+        if (num < 20 || num > 40) {
+            console.log('Dream comes true!');
+        }
 
-            console.groupEnd();
-        </script>
-    </body>
+        console.groupEnd();
+    </script>
+</body>
 </html>
