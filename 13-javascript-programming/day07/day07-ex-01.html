@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>day07-ex-01</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        console.group('Ex-01');
+
+         var favorites = ['Coffee', 'Juice', 'Coke', 'Milk', 'Tea'];
+
+         for (var i = 0; i < favorites.length; i++) {
+            var result = favorites[i] === 'Coke' ? 'Soft Drink' : favorites[i];
+            console.log(result);
+            }
+
+        console.groupEnd();
+
+        console.group('Ex-02');
+
+        for (var i = 0; i < 8; i++) {
+            console.log('margin-top: %dpx', i * 50);
+            }
+
+        console.groupEnd();
+
+        console.group('Ex-03');
+
+            for (var i = 0; i < 8; i++) {
+                console.log('margin-top: %dpx', (i % 4) * 50);
+            }
+
+        console.groupEnd();
+    </script>
+</body>
+</html>
