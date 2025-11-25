@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>day08-01</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        console.groupCollapsed('EX-01');
+
+            function printName () {
+                console.log('Harry Potter!');
+            }
+
+            printName();
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-02');
+
+            function greeting (name) {
+                console.log(`Hi, ${name}. Nice to meet you!`);
+            }
+        
+            greeting('Harry');
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-03');
+
+            function getAverage(n1, n2) {
+                return (n1 + n2) / 2;
+            }
+            
+            var n1 = 31;
+            var n2 = 17;
+
+            console.log(`The average of ${n1} and ${n2} = ${getAverage(n1, n2)}`);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-04');
+
+            const rect = {
+                width: 13,
+                height: 8,
+                getArea: function () {
+                    return this.width * this.height;
+                }
+            };
+
+            console.log(rect.getArea());
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-05');
+
+            window.setTimeout(function () {
+                console.log('Pay attention!');
+            }, 3000);
+
+        console.groupEnd();
+
+        console.groupCollapsed('EX-06');
+
+            let i = 1;
+
+            const timer = window.setInterval(function () {            
+                    console.log(`i = ${i}`)   
+                    
+                    i++;
+                    if (i >= 12) {
+                        clearInterval(timer);
+                    }        
+            }, 2000);
+
+        console.groupEnd();
+    </script>
+</body>
+</html>
