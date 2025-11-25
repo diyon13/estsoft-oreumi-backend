@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        const backgroundColor = ['red', 'green', 'blue'];
+
+        let count = 0;
+
+        window.setInterval(function () {
+            console.log(`background-color: ${backgroundColor[count % backgroundColor.length]};`);
+
+            count++;
+        }, 2000);
+    </script>
+</body>
+</html>

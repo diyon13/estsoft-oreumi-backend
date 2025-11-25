@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>day08-ex-01</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        const messages = [
+            'Time is gold.',
+            'No sweat, no sweet.',
+            'Asking costs nothing.',
+            'Step by step goes a long way.',
+            'You will never know until you try.'
+        ];
+
+        let i = 0;
+
+        const timerId = window.setInterval(function () {
+            console.log(`${i + 1}. ${messages[i]}`);
+            i++;
+
+            if (i >= messages.length) {
+                window.clearInterval(timerId);
+            }
+        }, 2000);
+
+    </script>
+</body>
+</html>
