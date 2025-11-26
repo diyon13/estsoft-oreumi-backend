@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>day09-01</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hello">Hello World!</h1>
+    <a href="https://www.google.com" id="search">Search engine</a>
+    <h1 id="time">Time is gold.</h1>
+
+    <h2 class="words">Time is gold.</h2>
+    <h2 class="words">No sweat, no sweet</h2>
+    <h2 class="words">Asking costs nothing</h2>
+
+    <ul id="list">
+        <li><a href="http://www.google.com">Google</a></li>
+        <li><a href="http://www.naver.com">Naver</a></li>
+        <li><a href="http://www.Daum.net">Daum</a></li>
+    </ul>
+
+    <h1 id="best">DO YOUR BEST!</h1>
+
+    <div id="box"></div>
+    <script>
+        const hello = document.getElementById('hello');
+        hello.innerHTML = 'Hello JavaScript!';
+
+        // const search = document.getElementById('search');
+        // search.href = 'https://www.naver.com';
+        document.getElementById('search').href = 'https://www.naver.com';
+
+        window.setTimeout(function () {
+            document.getElementById('time').style.display = 'none';
+        }, 3000);
+
+        const words = document.getElementsByClassName('words');
+
+        // for (let i = 0; i < words.length; i++) {
+        //     words[i].style.color = 'red';
+        // }
+
+        for (element of words) {
+            element.style.color = 'red';
+        }
+
+        const listItems = document.querySelectorAll('#list > li > a');
+
+        // listItems.forEach(function (a) {
+        //     a.innerHTML += ' (' + a.href + ')';
+        // });
+
+        // for (let i = 0; i < listItems.length; i++) {
+        //     const href = listItems[i].href;
+        //     listItems[i].innerHTML += `(${href} )`;
+        // }
+
+        for (const element of listItems) {
+            element.innerHTML += `(${element.href} )`
+        }
+
+        
+        const best = document.getElementById('best');
+        let colors = ['red', 'blue', 'green', 'gold'];
+        let i = 0;
+
+        window.setInterval(function () {
+            best.style.color = colors[i % colors.length];
+            i++
+        },2000);
+
+        const box = document.getElementById('box');
+        let j = 1;
+
+        let timerId = window.setInterval(function () {
+            box.style.marginLeft = j * 200 + 'px';
+            j++;
+
+            if (j >= 4) {
+                window.clearInterval(timerId);
+            } 
+        }, 2000);
+
+        
+    </script>
+</body>
+</html>
