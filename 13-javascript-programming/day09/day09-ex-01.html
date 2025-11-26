@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>day09-ex-01</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        #newsTicker {
+            width: 200px;
+            border: 10px solid gold;
+            margin: 100px auto;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        #newsTicker > ul > li {
+            line-height: 30px;
+            padding-left: 10px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div id="newsTicker">
+        <ul>
+            <li>1. Time is gold.</li>
+            <li>2. No sweat, no sweet.</li>
+            <li>3. Asking costs nothing.</li>
+            <li>4. Step by step goes a long way.</li>
+            <li>5. You will never know until you try.</li>
+        </ul>
+    </div>
+
+    <script>
+        const INTERVAL = 2000;
+        const DURATION = 400;
+        const newsList = document.querySelector('#newsTicker > ul');
+
+
+        window.setInterval(function () {
+            newsList.style.marginTop = '-30px';
+
+            window.setTimeout(function () {
+                newsList.appendChild(newsList.firstElementChild);
+                newsList.removeAttribute('style');
+            }, DURATION);
+        }, INTERVAL);
+
+    </script>
+</body>
+</html>
