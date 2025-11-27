@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        #best {
+            background-color: #444;
+        }
+
+        #work {
+            width: 200px;
+            background-color: #444;
+        }
+
+        #form {
+            margin-bottom: 2em;
+        }
+
+        #form > p:not(:last-child) {
+            margin-bottom: 0.6em;
+        }
+
+        #form > P > label:first-child {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+        #form > p > input[type="submit"] {
+            display: block;
+            width: 350px;
+            padding: 0.4em 0;
+        }
+
+        #log {
+            line-height: 1.8;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            const work = document.getElementById('work');
+            const move = document.getElementById('move');
+            const reset = document.getElementById('reset');
+            
+            let i = 1;
+
+            move.addEventListener('click', function () {
+                work.style.transform = `translateX(${i++ * 200}px)`;
+            });
+    
+            reset.addEventListener('click', function () {
+                // work.style.transform = 'translateX(0)';
+                work.removeAttribute('style');
+                i = 1;
+            });
+
+            
+            // const check = document.querySelector('input[name="confirm"]');
+            // const result = document.getElementById('result');
+
+            // check.addEventListener('click', function (event) {
+            //     event.preventDefault();
+
+            //     const name = document.getElementById('name').value;
+            //     const age = document.getElementById('age').value;
+            //     const gender = document.querySelector('input[name="gender"]:checked')
+
+            //     result.innerHTML = `
+            //         반갑습니다, ${name} 님.<br>
+            //         ${name} 님은 ${age} ${gender.value}입니다.
+            //     `;
+            // });
+
+            document.getElementById('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = this.name.value;
+                const gender = this.gender.value === 'male' ? '남자' : '여자';
+                // const age = this.age.options[this.age.selectedIndex].value;
+                const age = this.age.value;
+
+                document.getElementById('log').innerHTML = 
+                    `반갑습니다, ${name} 님.<br>
+                    ${name} 님은 ${age} ${gender}입니다.`;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 id="hello">Hello World!</h1>
+    <h1 id="best">Do YOUR BEST!</h1>
+    <ul id="link">
+        <li><a href="http://www.google.com">Google</a></li>
+        <li><a href="http://www.naver.com">Naver</a></li>
+        <li><a href="http://www.daum.net">Daum</a></li>
+        <li><a href="http://www.Facebook.com">Facebook</a></li>
+        <li><a href="http://www.twitter.com">Twitter</a></li>
+    </ul>
+
+    <h1 id="step">Step by step goes a long way.</h1>
+    <p>
+        <button type="button" id="toggle">TOGGLE</button>
+    </p>
+
+    <h1 id="work">WORK HARD!</h1>
+
+    <p>
+        <button type="button" id="move">MOVE!</button>
+        <button type="button" id="reset">RESET!</button>
+    </p>
+
+    <form action="/server/program" method="post" id="form">
+
+        <p>
+            <label>이름: </label>
+            <input type="text" id="name" autocomplete="off">
+        </p>
+        
+        <p>
+            <label>성별: </label>
+            <label><input type="radio" name="gender" value="male">남자</label>
+            <label><input type="radio" name="gender" value="female">여자</label>
+        </p>
+
+        <p>
+            <label>연령대: </label>
+            <select>
+                <option value="10대">10대</option>
+                <option value="20대">20대</option>
+                <option value="30대">30대</option>
+                <option value="40대">40대</option>
+                <option value="50대">50대</option>
+            </select>
+        </p>
+
+        <p>
+            <input type="submit" name="confirm" value="확인">
+        </p>
+
+        <div id="log"></div>
+    </form>
+    <script>
+        const hello = document.getElementById('hello');
+
+        hello.onclick = function () {
+            this.style.display = 'none';
+        };
+
+        const duration = 1000;
+        const best = document.getElementById('best');
+
+        best.addEventListener('click', function () {
+            this.style.transitionDuration = duration + 'ms';
+            this.style.opacity = 0;
+            this.style.visibility = 'hidden';
+
+            // window.setTimeout(function () {
+            //     best.style.display = 'none';
+            //     best.style.transitionDuration = '';
+            //     best.style.opacity = 'null';
+            // }, duration);
+        });
+
+        // const link = document.querySelectorAll('#link > ul > li');
+        // const links = document.querySelectorAll('#link a');
+
+        // links.forEach(function (link) {
+        //     link.addEventListener('click', function (event) {
+        //         event.preventDefault();
+        //         window.alert(this.href);
+        //     });
+        // });
+
+        for (const link of document.links) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                window.alert(this.href);
+            });
+        }
+
+        const step = document.getElementById('step');
+        
+        document.getElementById('toggle').addEventListener('click', function () {
+            if (this.innerHTML === 'TOGGLE') {
+                step.style.color = 'red';
+                this.innerHTML = 'RESET';
+            } else {
+                step.removeAttribute('style');
+                this.innerHTML = 'TOGGLE';
+            }
+        });
+    </script>
+</body>
+</html>
