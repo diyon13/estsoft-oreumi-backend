@@ -12,6 +12,7 @@
             bottom: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.7);
+            display: none;
         }
 
         #overlay > img {
@@ -19,13 +20,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70%;
+            max-width: 80%;
+            max-height: 80%;
         }
 
         #thumbnails {
             margin: 100px;
             display: flex;
             gap: 10px;
+        }
+
+        #thumbnails > li > a {
+            display: block;
         }
 
         #thumbnails > li > a > img {
@@ -45,8 +51,8 @@
             const overlay = document.getElementById('overlay');
             const img = document.querySelector('#overlay > img');
             
-            thumbnails.forEach(function (thumbnails) {
-                thumbnails.addEventListener('click', function (event) {
+            thumbnails.forEach(function (element) {
+                element.addEventListener('click', function (event) {
                     event.preventDefault();
                     img.src = this.href;
                     overlay.style.display = 'block';
@@ -57,7 +63,7 @@
                 overlay.style.display = 'none';
             });
 
-            document.querySelector('#overlay > img').addEventListener('click', function (event) {
+            img.addEventListener('click', function (event) {
                 event.stopPropagation();
             });
         });
