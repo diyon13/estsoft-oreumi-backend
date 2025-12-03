@@ -14,9 +14,9 @@ public class day02Ex04 {
 
         in.close();
 
-        int a = 0;
-        int b = 1;
-        int c = 0;
+        long a = 0;
+        long b = 1;
+        long c = 0;
 
         for (int i = 2; i <= num; i++) {
             c = a + b;
