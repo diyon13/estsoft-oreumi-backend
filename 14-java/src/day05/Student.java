@@ -55,7 +55,7 @@ public class Student {
     }
     /**
     * 유효한 점수인지 확인
-     * 
+     *
     * @param score 확인하고자 하는 점수
     * @return 유효한 점수인지 여부
     */
