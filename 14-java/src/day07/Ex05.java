@@ -35,10 +35,10 @@ public class Ex05 {
                     System.out.printf("Average: %.1f\n", average);
                     break;
                 } catch (NegativeScoreException | InvalidScoreException e) {
-                    System.err.println(e.getMessage());
+                    System.out.println(e.getMessage());
                     System.out.println();
                 } catch (InputMismatchException e) {
-                    System.err.println("ERROR: Invalid input entered.");
+                    System.out.println("ERROR: Invalid input entered.");
                     System.out.println();
                     in.nextLine();
                 }
