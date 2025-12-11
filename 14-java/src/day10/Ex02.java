@@ -50,18 +50,19 @@ public class Ex02 {
                 N2 + N3 + N4,
                 N2 + N3 + N5,
                 N2 + N4 + N5,
-                N3 + N4 + N5 };
+                N3 + N4 + N5
+        };
 
         // 가능한 조합을 문자열로 표현 해두기
         String[] numbers = {
-                // 1장
+                // 1장 선택 (5개)
                 String.valueOf(N1),
                 String.valueOf(N2),
                 String.valueOf(N3),
                 String.valueOf(N4),
                 String.valueOf(N5),
 
-                // 2장
+                // 2장 선택 (10개)
                 (N1) + " " + (N2),
                 (N1) + " " + (N3),
                 (N1) + " " + (N4),
@@ -73,7 +74,7 @@ public class Ex02 {
                 (N3) + " " + (N5),
                 (N4) + " " + (N5),
 
-                //3장
+                // 3장 선택 (10개)
                 (N1) + " " + (N2) + " " + (N3),
                 (N1) + " " + (N2) + " " + (N4),
                 (N1) + " " + (N2) + " " + (N5),

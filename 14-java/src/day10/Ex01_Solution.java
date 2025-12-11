@@ -3,7 +3,7 @@ package day10;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Ex01_02 {
+public class Ex01_Solution {
     public static void main(String[] args) {
 
     }
