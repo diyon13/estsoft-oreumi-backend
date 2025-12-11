@@ -8,6 +8,18 @@ public class Ex04 {
         // 자연수를 담을 ArrayList라는 빈 리스트를 만들고
         ArrayList<Integer> list = new ArrayList<>();
 
+        // 제한 조건 검사
+        if (arr.length == 1000000) {
+                throw new IllegalArgumentException();
+        }
+
+        for (int n : arr) {
+            if ( n < 0 || n > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+
         // 첫번째수는 절대 중복되지 않으니 저장
         list.add(arr[0]);
 
@@ -30,7 +42,7 @@ public class Ex04 {
     // 테스트용
     public static void main(String[] args) {
         Ex04 solution = new Ex04();
-        int[] array = new int[]{1, 1, 3, 3, 0, 1, 1, 5, 6, 5};
+        int[] array = new int[]{1, 1, 3, 3, 3, 3, 3, 0, 1, 1, 5, 6, 5, 100};
 
         System.out.println(Arrays.toString(solution.solution(array)));
     }
