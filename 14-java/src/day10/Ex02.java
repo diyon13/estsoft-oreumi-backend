@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ex02 {
     public static void main(String[] args) {
         // 변수 선언
-        int N1, N2, N3;
+        int N1, N2, N3, N4, N5;
         int bestSum = 0;
         int bestIndex = 0;
 
@@ -15,20 +15,75 @@ public class Ex02 {
         N1 = in.nextInt();
         N2 = in.nextInt();
         N3 = in.nextInt();
+        N4 = in.nextInt();
+        N5 = in.nextInt();
         System.out.println();
 
         // 가능한 조합 생성
-        int[] sums = { N1, N2, N3, N1 + N2, N1 + N3, N2 + N3, N1 + N2 + N3 };
+        int[] sums = {
+                // 1장 선택 (5개)
+                N1,
+                N2,
+                N3,
+                N4,
+                N5,
+
+                // 2장 선택 (10개)
+                N1 + N2,
+                N1 + N3,
+                N1 + N4,
+                N1 + N5,
+                N2 + N3,
+                N2 + N4,
+                N2 + N5,
+                N3 + N4,
+                N3 + N5,
+                N4 + N5,
+
+                // 3장 선택 (10개)
+                N1 + N2 + N3,
+                N1 + N2 + N4,
+                N1 + N2 + N5,
+                N1 + N3 + N4,
+                N1 + N3 + N5,
+                N1 + N4 + N5,
+                N2 + N3 + N4,
+                N2 + N3 + N5,
+                N2 + N4 + N5,
+                N3 + N4 + N5 };
 
         // 가능한 조합을 문자열로 표현 해두기
         String[] numbers = {
+                // 1장
                 String.valueOf(N1),
                 String.valueOf(N2),
                 String.valueOf(N3),
+                String.valueOf(N4),
+                String.valueOf(N5),
+
+                // 2장
                 String.valueOf(N1) + " " + String.valueOf(N2),
                 String.valueOf(N1) + " " + String.valueOf(N3),
+                String.valueOf(N1) + " " + String.valueOf(N4),
+                String.valueOf(N1) + " " + String.valueOf(N5),
                 String.valueOf(N2) + " " + String.valueOf(N3),
-                String.valueOf(N1) + " " + String.valueOf(N2) + " " + String.valueOf(N3)
+                String.valueOf(N2) + " " + String.valueOf(N4),
+                String.valueOf(N2) + " " + String.valueOf(N5),
+                String.valueOf(N3) + " " + String.valueOf(N4),
+                String.valueOf(N3) + " " + String.valueOf(N5),
+                String.valueOf(N4) + " " + String.valueOf(N5),
+
+                //3장
+                String.valueOf(N1) + " " + String.valueOf(N2) + " " + String.valueOf(N3),
+                String.valueOf(N1) + " " + String.valueOf(N2) + " " + String.valueOf(N4),
+                String.valueOf(N1) + " " + String.valueOf(N2) + " " + String.valueOf(N5),
+                String.valueOf(N1) + " " + String.valueOf(N3) + " " + String.valueOf(N4),
+                String.valueOf(N1) + " " + String.valueOf(N3) + " " + String.valueOf(N5),
+                String.valueOf(N1) + " " + String.valueOf(N4) + " " + String.valueOf(N5),
+                String.valueOf(N2) + " " + String.valueOf(N3) + " " + String.valueOf(N4),
+                String.valueOf(N2) + " " + String.valueOf(N3) + " " + String.valueOf(N5),
+                String.valueOf(N2) + " " + String.valueOf(N4) + " " + String.valueOf(N5),
+                String.valueOf(N3) + " " + String.valueOf(N4) + " " + String.valueOf(N5),
         };
 
         // 입력창 닫기
