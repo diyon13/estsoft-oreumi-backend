@@ -28,9 +28,15 @@ public class Ex04 {
         System.out.printf("The least common factor of %d and %d = %d\n", n1, n2, lcm);
 
     }
-    
-    public static int getGcf(int a, int b) {
 
+    /**
+     * 유클리드 알고리즘을 이용해 최대공약수 구하기
+     *
+     * @param a 사용자가 입력한 첫번째 정수
+     * @param b 사용자가 입력한 두번째 정수
+     * @return a와 b와 최대공약수
+     */
+    public static int getGcf(int a, int b) {
         // 유클리드 알고리즘
         if (a < b) {
             int temp = a;

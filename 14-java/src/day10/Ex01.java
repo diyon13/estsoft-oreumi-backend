@@ -17,17 +17,17 @@ public class Ex01 {
         N = in.nextInt();
         System.out.println();
 
-        // 입력창 닫기
+        // 입력 스트림 닫기
         in.close();
 
         // 사용자가 0이하의 값을 입력했을때 에러메세지 출력
         if (N <= 0) {
-            System.err.println("Error: 올바른 값을 입력해 주세요.");
+            System.err.println("ERROR: 올바른 값을 입력해 주세요.");
             return;
         }
 
         // 변수 초기화
-        num = 0;
+        num = 665;
         count = 0;
 
         while (true) {
@@ -44,13 +44,18 @@ public class Ex01 {
         }
 
         // 입력한 값의 따라 출력값이 달라지므로 ordinal에 대입
-        if (N >= 1 && N <= 3) {
+        if (N <= 3) {
             ordinal = ordinals[N - 1];
         } else {
             ordinal = N + "th";
         }
 
         // 출력
-        System.out.printf("The number included in the %s episode title = %d", ordinal, num);
+        System.out.printf("The number included in the %s episode title = %d\n", ordinal, num);
+        System.out.println();
+
+        // 현재 시각을 ms 단위로 저장하는 변수
+        long StratTime = System.nanoTime();
+        System.out.printf("runtime = %.3fms\n", (double)(System.nanoTime() - StratTime)/ 100000.0);
     }
 }

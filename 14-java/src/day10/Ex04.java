@@ -19,7 +19,6 @@ public class Ex04 {
             }
         }
 
-
         // 첫번째수는 절대 중복되지 않으니 저장
         list.add(arr[0]);
 
@@ -32,6 +31,7 @@ public class Ex04 {
 
         // list에 저장한 값을 answer 배열에 복사
         int[] answer = new int[list.size()];
+
         for (int i = 0; i < list.size(); i++) {
             answer[i] = list.get(i);
         }
@@ -42,7 +42,7 @@ public class Ex04 {
     // 테스트용
     public static void main(String[] args) {
         Ex04 solution = new Ex04();
-        int[] array = new int[]{1, 1, 3, 3, 3, 3, 3, 0, 1, 1, 5, 6, 5, 100};
+        int[] array = new int[]{1, 1, 3, 3, 3, 3, 3, 0, 1, 1, 5, 6, 5};
 
         System.out.println(Arrays.toString(solution.solution(array)));
     }
