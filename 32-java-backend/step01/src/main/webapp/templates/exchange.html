@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Exchange Calculation</title>
+</head>
+<body>
+<h1>Currency Exchange Calculation</h1>
+
+<form action="exchange" method="get">
+    <input type="hidden" name="command" value="calculate">
+    KRW <input type="text" name="krw"> to
+    <select name="currency">
+        <option value="usd">US Dollar</option>
+        <option value="eur">Euro</option>
+        <option value="jpy">Japan Yen</option>
+        <option value="cny">China Yuan</option>
+    </select>
+
+    <input type="submit" name="calc" value="Calculate">
+</form>
+
+</body>
+</html>
