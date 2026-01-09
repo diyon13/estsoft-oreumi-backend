@@ -7,10 +7,14 @@
 <body>
 <h1>Multiplication Table</h1>
 
-<form action="multiplication" method="get">
+<pre></pre>
+
+<p>value is an invalid value.</p>
+
+<form action="multiple" method="get">
     <p>
         <label>Multiplication Table for
-            <input type="text" name="number">
+            <input type="number" name="number" min="2" max="9" step="1">
             <input type="hidden" name="command" value="print">
             <input type="submit" value="Print">
         </label>

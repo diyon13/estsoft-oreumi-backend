@@ -38,13 +38,14 @@ public class MultiplicationServlet extends HttpServlet {
 
         // 클라이언트에서 전송한 데이터를 참조
         String command = request.getParameter("command");
-        String numberParam = request.getParameter("number");
 
         // 응답할 데이터의 미디어 형식(MIME type) 설정
         response.setContentType("text/html;charset=UTF-8");
 
         // printWriter 인스턴스 생성
         PrintWriter out = response.getWriter();
+
+        // 응답할 데이터를 HTML 형식으로 생성
 
         // 클라이언트에 응답할 데이터 생성
         String output = """
@@ -64,7 +65,7 @@ public class MultiplicationServlet extends HttpServlet {
 
             if (number >= 2 && number <= 9) {
                 for (int i = 1; i <= 9; i++) {
-                    output += String.format("<p>%d × %d = %d</p>", number, i, number * i);
+                    output += String.format("<p>%d * %d = %d</p>", number, i, number * i);
                 }
             }
         }
