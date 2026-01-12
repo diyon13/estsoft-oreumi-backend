@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership Registration Form</title>
+    <style>
+        #memberForm > p > label > span {
+            display: inline-block;
+            width: 90px;
+            padding-right: 1em;
+            text-align: right;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('memberForm').addEventListener('submit', function (event) {
+                const lengthUsername = this.username.value.length;
+                const lengthPassword = this.password.value.length;
+                const lengthName = this.name.value.length;
+                const lengthEmail = this.email.value.length;
+
+                if(!lengthUsername || !lengthPassword || !lengthName || !lengthEmail) {
+                    event.preventDefault();
+                    window.alert("you must fill out all fields!");
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <h1>Membership Registration Form</h1>
+
+    <form action="member4" method="post" id="memberForm">
+        <p>
+            <label>
+                <span>Username: </span><input type="text" name="username" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                <span>Password: </span><input type="password" name="password" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                <span>Name: </span><input type="text" name="name" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                <span>Email: </span><input type="text" name="email" required>
+            </label>
+        </p>
+
+        <p>
+            <input type="submit" value="Register">
+        </p>
+    </form>
+
+
+</body>
+</html>
