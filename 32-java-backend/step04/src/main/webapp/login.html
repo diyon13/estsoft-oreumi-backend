@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <script>
+        window.addEventListener('load', function () {
+            //입력 양식의 유효성 검사(form validation)
+            document.getElementById("formLogin").addEventListener('submit', function (event) {
+                const lengthUsername = this.username.value.length;
+                const lengthPassword = this.password.value.length;
+
+                if (lengthUsername <= 0 || lengthPassword <=0) {
+                    window.alert('You must enter your username and password!');
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Login Form</h1>
+
+    <form action="login" method="post" id="formLogin">
+        <p>
+            <label>Username: <input type="text" name="username" required></label>
+        </p>
+        <p>
+            <label>Password: <input type="password" name="password"></label>
+        </p>
+        <p>
+            <input type="submit" name="login" value="Log in">
+        </p>
+    </form>
+</body>
+</html>

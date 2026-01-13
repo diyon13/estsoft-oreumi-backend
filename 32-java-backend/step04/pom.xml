@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>step03</artifactId>
+    <artifactId>step04</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>step03</name>
+    <name>step04</name>
     <packaging>war</packaging>
 
     <properties>
@@ -24,6 +24,7 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>

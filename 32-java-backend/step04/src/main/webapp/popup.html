@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup Window</title>
+    <script src="cookie.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('disablePopup').addEventListener('change', function() {
+                if (this.checked) {
+                    setCookie('disablePopup', 'true', 1);
+                } else {
+                    deleteCookie('disablePopup');
+                }
+            });
+
+            //#close 요소의 click 이벤트 핸들러
+            document.getElementById('close').addEventListener('click', function() {
+                window.close();
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h1>Popup Window</h1>
+
+<p>
+    <label>
+        <input type="checkbox" id="disablePopup">
+        Avoid the pop-tp window for a day.
+    </label>
+</p>
+
+<p>
+    <button type="button" id="close">Close Window</button>
+</p>
+
+</body>
+</html>
