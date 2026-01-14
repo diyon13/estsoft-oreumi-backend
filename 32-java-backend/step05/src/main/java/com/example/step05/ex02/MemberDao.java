@@ -1,4 +1,4 @@
-package com.example.step04.ex03;
+package com.example.step05.ex02;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -172,12 +172,46 @@ public class MemberDao {
     }
 
     /**
+     * ResultSet 인스턴스에서 회원 목록을 생성
+     *
+      * @return 회원 목록
+     */
+
+    private List<MemberVo> getMemberListFromResultSet() throws SQLException {
+        List<MemberVo> memberList = new ArrayList<>();
+
+        // ResultSet 인스턴스의 커서를 첫 번재 레코드 이전으로 이동
+        resultSet.beforeFirst();
+
+        // 반복자(iterator)로 ResultSet 인스턴스에 저장된 레코드를 차례대로 확인
+        while (resultSet.next()) {
+            // ResultSet 인스턴스에서 조회한 레코드의 컬럼으로 MemberVo 인스턴스 생성
+            MemberVo memberVo = new MemberVo(
+                    resultSet.getInt("id"),
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getString("name"),
+                    resultSet.getString("email"),
+                    resultSet.getDate("created_at")
+            );
+
+            // ArrayList 인스턴스에 MemberVo 인스턴스를 추가
+            memberList.add(memberVo);
+        }
+
+
+        //회원 목록을 반환
+        return memberList;
+    }
+
+
+    /**
      * members 테이블의 모든 레코드를 조회
      *
      * @return 조회한 레코드의 목록
      */
     public List<MemberVo> getMemberList() {
-        List<MemberVo> memberList = new ArrayList<>();
+        List<MemberVo> memberList = null;
 
         try {
             // 실행할 SQL 문을 작성
@@ -186,21 +220,9 @@ public class MemberDao {
             // SQL 문을 실행
             executeQuery(query);
 
-            // 반복자(iterator)로 ResultSet 인스턴스에 저장된 레코드를 차례대로 확인
-            while (resultSet.next()) {
-                // ResultSet 인스턴스에서 조회한 레코드의 컬럼으로 MemberVo 인스턴스 생성
-                MemberVo memberVo = new MemberVo(
-                        resultSet.getInt("id"),
-                        resultSet.getString("username"),
-                        resultSet.getString("password"),
-                        resultSet.getString("name"),
-                        resultSet.getString("email"),
-                        resultSet.getDate("created_at")
-                );
 
-                // ArrayList 인스턴스에 MemberVo 인스턴스를 추가
-                memberList.add(memberVo);
-            }
+            // getMemberListFromResultSet 메서드로 회원 목록을 생성
+            memberList = getMemberListFromResultSet();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -358,6 +380,36 @@ public class MemberDao {
 
         // 조회한 회원 정보를 반환
         return memberVo;
+    }
+
+    /**
+     * name 컬럼으로 members 테이블을 조회해서 회원 목록을 생성
+     *
+     * @param name 조회하고자 하는 회원의 이름
+     * @return 회원 목록
+     */
+
+    public List<MemberVo> getMemberListByName(String name) {
+        List<MemberVo> memberList = null;
+
+        try {
+            // name 컬럼으로 members 테이블에서 레코드를 조회하는 SQL 문
+            String query = String.format("SELECT * FROM members WHERE LOWER(name) LIKE '%%%s%%'",
+                    name.toLowerCase());
+
+            // Statement 인스턴스로 SQL 문을 실행
+            executeQuery(query);
+
+            // getMemberListFromResultSet 메서드로 resultSet 인스턴스에서 회원 목록을 생성
+            memberList = getMemberListFromResultSet();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            closeConnection();
+        }
+
+        // 회원 목록을 반환
+        return memberList;
     }
 }
 
