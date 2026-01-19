@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: step11
+
+  datasource:
+    # driver-class-name: org.h2.Driver
+    # url: jdbc:h2:~/test
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:h2:~/test
+    username: sa
+    password:
+
+    h2-embedded:
+      # driver-class-name: org.h2.Driver
+      # jdbc-url: jdbc:h2:~/test
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:h2:~/test
+      username: sa
+      password:
+
+  mybatis:
+    mapper-locations: mapper/**/*.xml
