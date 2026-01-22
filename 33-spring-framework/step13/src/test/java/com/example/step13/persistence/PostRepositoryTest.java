@@ -88,4 +88,21 @@ class PostRepositoryTest {
         assertEquals(title, updatedEntity.getTitle());
         log.info("updatedEntity = {}", updatedEntity);
     }
+
+    @Test
+    public void testDelete() {
+        Long id = 13L;
+
+        long countBefore = postRepository.count();
+        log.info("countBefore = {}", countBefore);
+
+        postRepository.findById(id).ifPresent(postEntity -> {
+            postRepository.delete(postEntity);
+
+            long countAfter = postRepository.count();
+            log.info("countAfter = {}", countAfter);
+
+            assertEquals(countBefore - 1, countAfter);
+        });
+    }
 }

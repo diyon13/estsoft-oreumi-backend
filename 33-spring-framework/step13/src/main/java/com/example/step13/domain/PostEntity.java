@@ -59,4 +59,22 @@ public class PostEntity {
         this.writer = writer;
         return this;
     }
+
+    /**
+     * PostDto 인스턴스를 PostEntity 인스턴스로 변환
+     *
+     * @param postDto 변환할 PostDto 인스턴스
+     * @return 변환할 PostEntity 인스턴스
+     */
+    public static PostEntity from(PostDto postDto) {
+        if (postDto == null) {
+            throw new IllegalArgumentException("postDto cannot be null");
+        }
+
+        return PostEntity.builder()
+                .title(postDto.getTitle())
+                .content(postDto.getContent())
+                .writer(postDto.getWriter())
+                .build();
+    }
 }
