@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board list</title>
+</head>
+<body>
+
+<h1>Board List</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Date</th>
+        <th>Last Updated</th>
+    </tr>
+    </thead>
+    <tbody>
+<!--  /*@thymesVar id="postDtoList" type="java.util.List"*/  -->
+    <tr th:each="postDto : ${postDtoList}" th:object="${postDto}" >
+        <td th:text="*{id}"></td>
+        <td><a th:href="@{read(id=*{id})}" th:text="*{title}"></a></td>
+        <td th:text="*{writer}"></td>
+        <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="*{#temporals.format(updatedAt, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p>
+    [<a th:href="@{write}">Write</a>]
+</p>
+
+</body>
+</html>

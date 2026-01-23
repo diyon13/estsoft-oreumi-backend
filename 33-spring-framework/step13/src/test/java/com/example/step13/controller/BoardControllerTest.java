@@ -28,4 +28,53 @@ class BoardControllerTest {
                 .andDo(print());
 
     }
+
+    @Test
+    public void testWrite() throws Exception {
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/board/write")
+                .param("title", "[TEST] BoardControllerTest#testWrite")
+                .param("content", "[TEST] BoardControllerTest#testWrite")
+                .param("writer", "JUnit");
+
+        mockMvc.perform(request)
+                .andExpect(status().is3xxRedirection())
+                .andDo(print());
+    }
+
+    @Test
+    public void testRead() throws Exception {
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/board/read")
+                .param("id", "99");
+
+        mockMvc.perform(request)
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        final String id = "96";
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/board/update")
+                .param("id", "96")
+                .param("title", "[TEST] BoardControllerTest#testUpdate")
+                .param("content", "[TEST] BoardControllerTest#testUpdate")
+                .param("writer", "JUnit");
+
+        mockMvc.perform(request)
+                .andExpect(status().is3xxRedirection())
+                .andDo(print());
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        final String id = "91";
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/board/delete")
+                .param("id", id);
+
+        mockMvc.perform(request)
+                .andExpect(status().is3xxRedirection())
+                .andDo(print());
+    }
 }

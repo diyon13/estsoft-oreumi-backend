@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th= "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${postDto.title}"></title>
+    <style>
+        #container { width: 800px; }
+        #container > ul { list-style-type: none; padding: 0; display: flex; gap: 50px; }
+    </style>
+</head>
+<body>
+
+<div id="container" th:object="${postDto}">
+    <h1 th:text="*{title}"></h1>
+
+    <ul id="info">
+        <li>ID: <span th:text="*{id}"></span></li>
+        <li>Writer: <span th:text="*{writer}"></span></li>
+        <li>Date: <span th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span></li>
+        <li>Last updated: <span th:text="*{#temporals.format(updatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span></li>
+    </ul>
+
+    <p th:text="*{content}"></p>
+
+    <hr>
+
+    <p>
+        [<a th:href="@{list}">List</a>]
+        [<a th:href="@{update}">Update</a>]
+        [<a th:href="@{delete}">Delete</a>]
+    </p>
+</div>
+
+</body>
+</html>
