@@ -1,14 +1,16 @@
 package com.example.step13.persistence;
 
 import com.example.step13.domain.PostEntity;
-import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,8 +35,24 @@ class PostRepositoryTest {
     }
 
     @Test
+    public void testGetListWithPaging() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending());
+
+        Page<PostEntity> postEntityPage = postRepository.findAll(pageable);
+
+        assertNotNull(postEntityPage);
+        assertEquals(10, postEntityPage.getSize());
+        assertEquals(0, postEntityPage.getNumber());
+
+        log.info("Page.getTotalElements = {}", postEntityPage.getTotalElements());
+        log.info("Page.getTotalPages = {}", postEntityPage.getTotalPages());
+        log.info("Page.getNumber() = {}", postEntityPage.getNumber());
+        log.info("Page.getSize() = {}", postEntityPage.getSize());
+    }
+
+    @Test
     public void testCreate() {
-        String title = "[Test] PostRepository testCreate";
+        String title = "[TEST] PostRepository#testCreate";
         String writer = "JUnit";
 
         PostEntity postEntity = PostEntity.builder()
@@ -42,6 +60,8 @@ class PostRepositoryTest {
                 .content(title)
                 .writer(writer)
                 .build();
+
+        log.info("postEntity = {}", postEntity);
 
         PostEntity savedEntity = postRepository.save(postEntity);
 
@@ -52,28 +72,30 @@ class PostRepositoryTest {
     }
 
     @Test
-    public void tesRead() {
+    public void testRead() {
         Long id = 95L;
 
-//        PostEntity postEntity = PostRepository.findById(id).get();
+        // PostEntity postEntity = postRepository.findById(id).get();
 
         postRepository.findById(id).ifPresentOrElse(
                 postEntity -> log.info("postEntity = {}", postEntity),
-                () -> { throw new RuntimeException(); });
+                () -> { throw new RuntimeException(); }
+        );
     }
 
     @Test
     public void testUpdate() {
         Long id = 98L;
-        String title = "[Test] PostRepository testUpdate";
+        String title = "[TEST] PostRepository#testUpdate";
         String writer = "JUnit";
+
         /*
         Optional<PostEntity> optionalPostEntity = postRepository.findById(id);
 
         assertTrue(optionalPostEntity.isPresent());
 
         PostEntity postEntity = optionalPostEntity.get();
-         */
+        */
 
         PostEntity postEntity = postRepository.findById(id).orElseThrow();
         log.info("postEntity = {}", postEntity);
@@ -93,13 +115,14 @@ class PostRepositoryTest {
     public void testDelete() {
         Long id = 13L;
 
-        long countBefore = postRepository.count();
+        final long countBefore = postRepository.count();
         log.info("countBefore = {}", countBefore);
 
         postRepository.findById(id).ifPresent(postEntity -> {
             postRepository.delete(postEntity);
+            log.info("deletedEntity = {}", postEntity);
 
-            long countAfter = postRepository.count();
+            final long countAfter = postRepository.count();
             log.info("countAfter = {}", countAfter);
 
             assertEquals(countBefore - 1, countAfter);

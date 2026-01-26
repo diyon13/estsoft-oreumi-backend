@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th= "http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="${postDto.title}"></title>
@@ -7,6 +7,15 @@
         #container { width: 800px; }
         #container > ul { list-style-type: none; padding: 0; display: flex; gap: 50px; }
     </style>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('delete')?.addEventListener('click', function (event) {
+                if (!window.confirm('Are you sure to delete the post?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -25,9 +34,9 @@
     <hr>
 
     <p>
-        [<a th:href="@{list}">List</a>]
-        [<a th:href="@{update}">Update</a>]
-        [<a th:href="@{delete}">Delete</a>]
+        [<a th:href="@{list(page=${criteria.page})}">List</a>]
+        [<a th:href="@{update(id=*{id}, page=${criteria.page})}">Update</a>]
+        [<a th:href="@{delete(id=*{id}, page=${criteria.page})}" id="delete">Delete</a>]
     </p>
 </div>
 

@@ -19,7 +19,7 @@ public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "title", length = 200, nullable = false)
     private String title;
@@ -64,7 +64,7 @@ public class PostEntity {
      * PostDto 인스턴스를 PostEntity 인스턴스로 변환
      *
      * @param postDto 변환할 PostDto 인스턴스
-     * @return 변환할 PostEntity 인스턴스
+     * @return 변환한 PostEntity 인스턴스
      */
     public static PostEntity from(PostDto postDto) {
         if (postDto == null) {

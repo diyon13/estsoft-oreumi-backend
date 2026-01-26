@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @Slf4j
 public class JdbcTest {
     // 정적 초기화 블록(static initialization block)
-    static  {
+    static {
         try {
             // JDBC 드라이버 로드
             Class.forName("org.h2.Driver");
@@ -28,10 +28,10 @@ public class JdbcTest {
             connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
 
             log.info("connection = {}", connection);
-        } catch (Exception e){
+        } catch (Exception e) {
             fail(e.getMessage());
         } finally {
-            if (connection != null) try { connection.close(); } catch (Exception ignored){}
+            if (connection != null) try { connection.close(); } catch (Exception ignored) {}
         }
     }
 }

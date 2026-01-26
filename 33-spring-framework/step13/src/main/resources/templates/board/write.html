@@ -6,7 +6,8 @@
     <style>
         #container { width: 800px; }
         #container > form > p > label { display: block; }
-        #container > form > p > label >input[type="text"],
+        #container > form > p > label > span { display: block; }
+        #container > form > p > label > input[type="text"],
         #container > form > p > label > textarea {
             display: block; width: 100%; box-sizing: border-box; font: 1em sans-serif;
         }
@@ -16,9 +17,9 @@
 <body>
 
 <div id="container">
-    <h1 th:text="${action}"></h1>
+    <h1 th:text="${title}"></h1>
 
-    <form th:action="${action}" method="post" th:object="${postDto}">
+    <form th:action="@{${action}}" method="post" th:object="${postDto}">
         <input type="hidden" name="id" th:value="*{id}" th:if="${postDto}">
         <p>
             <label>
@@ -35,7 +36,7 @@
         <p>
             <label>
                 <span>Content:</span>
-                <textarea name="content" th:value="${postDto} ? *{content}"></textarea>
+                <textarea name="content" th:text="${postDto} ? *{content}"></textarea>
             </label>
         </p>
         <p>

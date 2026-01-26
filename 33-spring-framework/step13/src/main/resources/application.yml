@@ -25,6 +25,13 @@ spring:
         show-sql: true
         format_sql: true
         use_sql_comments: false
+
   thymeleaf:
     prefix: file:src/main/resources/templates/
     cache: false
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
