@@ -21,6 +21,8 @@
 
     <form th:action="@{${action}}" method="post" th:object="${postDto}">
         <input type="hidden" name="id" th:value="*{id}" th:if="${postDto}">
+        <input type="hidden" name="page" th:value="${criteria.page}" th:if="${criteria}">
+        <input type="hidden" name="size" th:value="${criteria.size}" th:if="${criteria}">
         <p>
             <label>
                 <span>Title:</span>

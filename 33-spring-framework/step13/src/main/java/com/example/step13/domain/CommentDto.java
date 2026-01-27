@@ -1,0 +1,45 @@
+package com.example.step13.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@Builder
+public class CommentDto {
+    private Long id;
+    private Long postId;
+    private String content;
+    private String writer;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    // 정적 팩토리 메서드(static factory method)
+    public static CommentDto from(CommentEntity commentEntity) {
+        return CommentDto.builder()
+                .id(commentEntity.getId())
+                .postId(commentEntity.getPostEntity().getId())
+                .content(commentEntity.getContent())
+                .writer(commentEntity.getWriter())
+                .createdAt(commentEntity.getCreatedAt())
+                .updatedAt(commentEntity.getUpdatedAt())
+                .build();
+    }
+
+    /**
+     * CommentDto 인스턴스를 CommentEntity 인스턴스로 변환
+     *
+     * @param postEntity CommentEntity 인스턴스가 참조하는 PostEntity 인스턴스
+     * @return CommentEntity 인스턴스
+     */
+    public CommentEntity toEntity(PostEntity postEntity) {
+        return CommentEntity.builder()
+                .postEntity(postEntity)
+                .content(content)
+                .writer(writer)
+                .build();
+    }
+}

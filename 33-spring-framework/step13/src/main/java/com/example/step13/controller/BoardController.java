@@ -113,22 +113,25 @@ class BoardController {
 
     // "/board/update"로 들어온 POST 방식 요청에 매핑
     @PostMapping("/update")
-    public String update(PostDto postDto, RedirectAttributes redirectAttributes) {
+    public String update(PostDto postDto, Criteria criteria, RedirectAttributes redirectAttributes) {
         log.info("update = {}", postDto);
+        log.info("criteria = {}", criteria);
 
         if (boardService.update(postDto)) {
             redirectAttributes.addFlashAttribute("result", ResultDto.of(true, "update"));
         }
 
         redirectAttributes.addAttribute("id", postDto.getId());
+        redirectAttributes.addAttribute("page", criteria.getPage());
 
         return "redirect:/board/read";
     }
 
     // "/board/update"로 들어온 GET 방식의 요청에 매핑
     @GetMapping("/update")
-    public String update(@RequestParam Long id, Model model) {
+    public String update(@RequestParam Long id, Criteria criteria, Model model) {
         log.info("update = {}", id);
+        log.info("criteria = {}", criteria);
 
         model.addAttribute("postDto", boardService.read(id));
         model.addAttribute("action", "update");
@@ -139,12 +142,15 @@ class BoardController {
 
     // "/board/delete"로 들어온 GET 방식의 요청에 매핑
     @GetMapping("/delete")
-    public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
+    public String delete(@RequestParam Long id, Criteria criteria, RedirectAttributes redirectAttributes) {
         log.info("delete = {}", id);
+        log.info("criteria = {}", criteria);
 
         if (boardService.delete(id)) {
             redirectAttributes.addFlashAttribute("result", ResultDto.of(true, "delete"));
         }
+
+        redirectAttributes.addAttribute("page", criteria.getPage());
 
         return "redirect:/board/list";
     }

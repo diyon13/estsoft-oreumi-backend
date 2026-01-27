@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * posts 테이블과 매핑되는 JPA 엔티티(entity)
@@ -37,6 +39,10 @@ public class PostEntity {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "postEntity", cascade = CascadeType.REMOVE)
+    private List<CommentEntity> commentEntityList = new ArrayList<>();
 
     @Builder
     public PostEntity(String title, String content, String writer) {
