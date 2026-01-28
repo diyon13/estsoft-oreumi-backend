@@ -1,5 +1,6 @@
 package com.example.step13.domain;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +13,13 @@ import java.time.LocalDateTime;
 public class CommentDto {
     private Long id;
     private Long postId;
+
+    @NotBlank(message = "Content is required.")
     private String content;
+
+    @NotBlank(message = "Writer is required.")
     private String writer;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
