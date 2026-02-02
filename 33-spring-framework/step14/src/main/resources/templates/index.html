@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Hell!</title>
+</head>
+<body>
+
+<h1>Welcome to Hell!</h1>
+
+<div sec:authorize="isAuthenticated()">
+    <p>Welcome, <span sec:authentication="name"></span>!</p>
+    <p>Welcome, <span th:text="${#authentication.name}"></span>!</p>
+
+    <ul>
+        <li><a th:href="@{/board/}">Board</a></li>
+        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin/}">Administrator Dashboard</a></li>
+    </ul>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Log out</button>
+    </form>
+</div>
+
+<div sec:authorize="isAnonymous()">
+    <p>You are not logged in.</p>
+
+    <ul>
+        <li><a th:href="@{/login}">Log in</a></li>
+        <li><a th:href="@{/signup}">Sign up</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

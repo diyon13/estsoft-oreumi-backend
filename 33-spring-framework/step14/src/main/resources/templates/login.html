@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <style>
+        #loginForm > p > label > span { display: block; }
+        #loginForm > p > label > input { display: block; width: 100%; box-sizing: border-box; }
+
+        #error { margin: 1em 0; color: crimson; }
+        #logout { margin: 1em 0; }
+    </style>
+</head>
+<body>
+
+<h1>Log in</h1>
+
+<div id="error" th:if="${param.error}">
+    Username or password is incorrect.
+</div>
+
+<div id="logout" th:if="${param.logout}">
+    You have been logged out.
+</div>
+
+<form action="#" th:action="@{/login}" method="post" id="loginForm">
+    <p>
+        <label>
+            <span>Username: </span>
+            <input type="text" name="username" placeholder="Username" required>
+        </label>
+    </p>
+    <p>
+        <label>
+            <span>Password: </span>
+            <input type="password" name="password" placeholder="Password" required>
+        </label>
+    </p>
+    <p>
+        <input type="submit" value="Login">
+    </p>
+</form>
+
+</body>
+</html>
