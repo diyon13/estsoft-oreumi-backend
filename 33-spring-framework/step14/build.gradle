@@ -56,6 +56,11 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    implementation("io.jsonwebtoken:jjwt-api:0.13.0")
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+
+    // Source: https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
 }
 
 
