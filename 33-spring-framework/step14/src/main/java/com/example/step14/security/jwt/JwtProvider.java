@@ -1,7 +1,10 @@
 package com.example.step14.security.jwt;
 
+import com.example.step14.domain.JwtResponseDto;
+import com.example.step14.security.CustomUserDetails;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -11,7 +14,7 @@ import java.time.Duration;
 import java.util.Date;
 
 /**
- * JWT 유틸리티 제공
+ * JWT 유틸리티를 제공
  */
 @Component
 @Slf4j
@@ -25,10 +28,10 @@ public class JwtProvider {
     public JwtProvider(JwtProperties jwtProperties) {
         this.jwtProperties = jwtProperties;
 
-        secretKey = new SecretKeySpec(jwtProperties.secretkey().getBytes(StandardCharsets.UTF_8),
+        secretKey = new SecretKeySpec(jwtProperties.secretKey().getBytes(StandardCharsets.UTF_8),
                 Jwts.SIG.HS256.key().build().getAlgorithm());
 
-        log.info("JWT secret-key: {}", jwtProperties.secretkey());
+        log.info("JWT secret-key: {}", jwtProperties.secretKey());
     }
 
     /**
@@ -37,12 +40,12 @@ public class JwtProvider {
     public String getUsername(String token) {
         /*
         return Jwts.parser()
-                .verifyWith(secretKey)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .get("username", String.class);
-         */
+            .verifyWith(secretKey)
+            .build()
+            .parseSignedClaims(token)
+            .getPayload()
+            .get("username", String.class);
+        */
 
         return getClaim(token, "username");
     }
@@ -50,8 +53,8 @@ public class JwtProvider {
     /**
      * JWT에서 권한(authority)을 추출
      */
-    public String getAuthorities(String token) {
-        return getClaim(token, "authorities");
+    public String getAuthority(String token) {
+        return getClaim(token, "authority");
     }
 
     /**
@@ -97,7 +100,7 @@ public class JwtProvider {
      */
     public String issueRefreshToken(String username) {
         return Jwts.builder()
-            .claim("username", username)
+                .claim("username", username)
                 .issuedAt(new Date())
                 .expiration(getDateAfterDuration(jwtProperties.refreshTokenExpiration()))
                 .signWith(secretKey)
@@ -109,5 +112,31 @@ public class JwtProvider {
      */
     private Date getDateAfterDuration(Duration duration) {
         return new Date(new Date().getTime() + duration.toMillis());
+    }
+
+    /**
+     * Authentication의 정보로 JwtResponseDto를 생성
+     */
+    public JwtResponseDto getJwtResponseDto(Authentication authentication) {
+        // Authentication에서 CustomUserDetails를 조회
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        // CustomUserDetails에서 username을 조회
+        assert userDetails != null;
+        String username = userDetails.getUsername();
+
+        // CustomUserDetails에서 사용자 권한(authority)을 조회
+        String authority = userDetails.getAuthorities().iterator().next().getAuthority();
+
+        // Access 토큰과 Refresh 토큰 발급
+        String accessToken = issueAccessToken(username, authority);
+        String refreshToken = issueRefreshToken(username);
+
+        // JwtResponseDto 생성
+        return JwtResponseDto.builder()
+                .grantType("Bearer")
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
     }
 }

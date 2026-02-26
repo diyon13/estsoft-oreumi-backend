@@ -22,6 +22,8 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
+        jdbc:
+          time_zone: Asia/Seoul
         show-sql: true
         format_sql: true
         use_sql_comments: false
@@ -35,10 +37,11 @@ spring:
       pageable:
         default-page-size: 10
         one-indexed-parameters: true
+
   profiles:
     include: secret
 
 jwt:
-  secret-key: pAqbmyRv4Ec6ruN2ym5WUCKisQsEr41mcnoW4zSe3oC
+  secret-key: xP2LFnL8MwWYKIvs4SCshI6tuCKYJYmKZueaGHehy0R
   access-token-expiration: 10m
   refresh-token-expiration: 14d

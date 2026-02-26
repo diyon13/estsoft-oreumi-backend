@@ -6,21 +6,20 @@ import java.time.Duration;
 
 @ConfigurationProperties(prefix = "jwt")
 public record JwtProperties(
-        String secretkey,
+        String secretKey,
         Duration accessTokenExpiration,
         Duration refreshTokenExpiration
-) {
+) { }
 
-}
 /*
 @ConfigurationProperties(prefix = "jwt")
+@Setter
 @Getter
 @Component
 public class JwtProperties {
-//    @Value("${jwt.secret-key}")
+    // @Value("${jwt.secret-key}")
     private String secretKey;
     private Duration accessTokenExpiration;
     private Duration refreshTokenExpiration;
 }
 */
-

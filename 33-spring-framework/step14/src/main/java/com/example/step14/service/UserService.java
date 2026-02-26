@@ -1,5 +1,7 @@
 package com.example.step14.service;
 
+import com.example.step14.domain.JwtResponseDto;
+import com.example.step14.domain.LoginDto;
 import com.example.step14.domain.UserDto;
 
 import java.util.Optional;
@@ -10,4 +12,5 @@ public interface UserService {
     Optional<UserDto> read(String username);
     Optional<UserDto> update(UserDto userDto);
     boolean delete(Long id);
+    JwtResponseDto login(LoginDto loginDto);
 }
